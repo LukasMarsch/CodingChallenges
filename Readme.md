@@ -8,4 +8,4 @@ This is the unofficial Readme markdown file
 -----------------
 =======
 
-Ein kleiner Link [besseres Google](scholar.google.com)
+Ein kleiner Link [besseres Google](https://scholar.google.com)

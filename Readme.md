@@ -14,3 +14,5 @@ Ein kleiner Link [besseres Google](scholar.google.com)
 * Butter
 * Toast
 * Pizza
+
+![Blume](flower.jpg "schöne Blume")

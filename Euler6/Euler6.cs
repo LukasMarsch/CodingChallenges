@@ -18,7 +18,8 @@ This is really just some simple math
 static int sumOfSquares(int numbers){
     int sum = 1;
     for(int count = 0; count >= numbers; count++){
-        sum += Math.Pow(count, 2);
+        sum += (int)Math.Pow((double)count, (double)2);
+        Console.WriteLine(sum);
     }
     return sum;
 }
@@ -28,11 +29,13 @@ static int squareofSums(int numbers){
     for(int count = 0; count >= numbers; count++){
         sum += count;
     }
-    return Math.Pow(sum, 2);
+    return (int)Math.Pow((double)sum, (double)2);
 }
 
 static int compareSquareSums(int numbers){
-    return squareofSums(numbers) - sumOfSquares(numbers);
+    int resSqoS = squareofSums(numbers);
+    int resSuoS = sumOfSquares(numbers);
+    return resSqoS - resSuoS;
 }
 
 Console.WriteLine(compareSquareSums(100));

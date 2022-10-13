@@ -23,4 +23,5 @@ for(int currentNumber=0; currentNumber<1000; currentNumber++){
         sum+=currentNumber;
     }
 }
-Console.WriteLine(sum);
+Console.WriteLine("Sum of all multiples of 3 and 5 till 1000 is: " + sum);
+// correct answer is 233168

@@ -59,3 +59,4 @@ internal class Program
         Console.WriteLine(primfaktorZerlegung(600851475143));
     }
 }
+//correct answer is 6857

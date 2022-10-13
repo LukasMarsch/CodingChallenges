@@ -2,7 +2,7 @@
 ### Here you may find some interesting challenges
 ### If you're lucky we even have a solution :P
 ---
-Authors:
+Authors:<br>
 @hornflip<br>
 @LukasMarsch<br>
 Feel free to adopt any of our code to your problems, it probably won't be the fastest or most efficient way to do it.

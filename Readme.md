@@ -1,6 +1,5 @@
 # Welcome to our Coding Challenges
-### Here you may find some interesting challenges
-### If you're lucky we even have a solution :P
+### Here you may find some solutions to Project Euler
 ---
 Authors:<br>
 @hornflip<br>

@@ -24,16 +24,16 @@ static int sumOfSquares(int numbers){
     return sum;
 }
 
-static int squareofSums(int numbers){
+static double squareofSums(int numbers){
     int sum = 1;
     for(int count = 0; count >= numbers; count++){
         sum += count;
     }
-    return (int)Math.Pow((double)sum, (double)2);
+    return Math.Pow((double)sum, (double)2);
 }
 
-static int compareSquareSums(int numbers){
-    int resSqoS = squareofSums(numbers);
+static double compareSquareSums(int numbers){
+    double resSqoS = squareofSums(numbers);
     int resSuoS = sumOfSquares(numbers);
     return resSqoS - resSuoS;
 }

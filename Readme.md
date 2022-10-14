@@ -1,9 +1,7 @@
 # Welcome to our Coding Challenges
 ### Here you may find some solutions to Project Euler
 ---
-Authors:<br>
-@hornflip<br>
-@LukasMarsch<br>
+
 > Feel free to adopt any of our code to your problems, it probably won't be the fastest or most efficient way to do it.<br>
 > You may consider contributing to this repo. If you don't want to feel dissapointed, save yourself from that pain.
 <br>

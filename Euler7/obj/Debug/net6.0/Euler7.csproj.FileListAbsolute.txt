@@ -1,0 +1,15 @@
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.csproj.AssemblyReference.cache
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.AssemblyInfoInputs.cache
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.AssemblyInfo.cs
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.csproj.CoreCompileInputs.cache
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\bin\Debug\net6.0\Euler7.exe
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\bin\Debug\net6.0\Euler7.deps.json
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\bin\Debug\net6.0\Euler7.runtimeconfig.json
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\bin\Debug\net6.0\Euler7.dll
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\bin\Debug\net6.0\Euler7.pdb
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.dll
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\refint\Euler7.dll
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.pdb
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\Euler7.genruntimeconfig.cache
+C:\Users\lmarsch\Repositories\CodingChallenges\Euler7\obj\Debug\net6.0\ref\Euler7.dll

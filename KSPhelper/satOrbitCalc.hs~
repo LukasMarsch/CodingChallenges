@@ -1,0 +1,9 @@
+
+neworbitalperiod hour min sec angel =  timeToString(secToHour(div((hourToSec hour min sec) * (360 + angel)) 360))
+
+hourToSec hour min sec = hour*3600 + min*60 + sec
+
+secToHour sec = (div sec 3600, mod (div sec 60) 60, mod sec 60)
+
+--timeToString :: (Int,Int,Int) -> [Char]
+timeToString (a,b,c) = (show a) ++ "h " ++ (if (b<11) then "0" else "") ++ (show b) ++ "m " ++ (if (c<10) then "0" else "") ++ (show c) ++ "s"

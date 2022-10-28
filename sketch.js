@@ -8,6 +8,8 @@ let width;
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  height = windowHeight;
+  width = windowWidth
 }
 
 

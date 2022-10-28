@@ -22,10 +22,10 @@ function secondToTime(sec) {
 }
 
 function newOrbitalPeriod(oldPeriod, angle) {
-  return Math.floor(oldPeriod * 360 / (360 + parseInt(angle)))
+  return Math.floor(oldPeriod * 360 / (360 + angle))
 }
 
 function calcNewPeriod() {
-  result = secondToTime(newOrbitalPeriod(timeToSecond(hour, min, sec), angle))
+  result = secondToTime(newOrbitalPeriod(timeToSecond(parseInt(hour), parseInt(min), parseInt(sec)), parseInt(angle)))
   document.getElemntById("result").innerHTML = result
 }

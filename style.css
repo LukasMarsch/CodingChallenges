@@ -30,6 +30,10 @@ a {
   color:white;
 }
 
-li :hover {
+li:hover {
   background-color: purple;
+}
+
+li:active{
+  background-color:grey;
 }

@@ -21,7 +21,11 @@ li {
   width: 10;
   font-size: 14;
   float: left;
-  margin: 4;
+}
+
+a {
+  
+  margin: 10;
 }
 
 a:hover {

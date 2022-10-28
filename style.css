@@ -21,10 +21,10 @@ li {
   width: 10;
   font-size: 14;
   float: left;
+  margin: 4;
 }
 
 a:hover {
   background-color: purple;
   color: white;
-  ;
 }

@@ -7,13 +7,14 @@ canvas {
   display: block;
 }
 
-ul {
+#navul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  position: fixed;
 }
 
-li {
+#navbar {
   font-family: Arial, Helvetica, sans-serif;
   display: inline;
   background-color: #404040;
@@ -24,15 +25,29 @@ li {
   padding:5px;
 }
 
-a {
+#navlink {
   margin: 10px;
-  color:white;
+  color:azure;
 }
 
-li:hover {
+#navbar:hover {
   background-color: purple;
 }
 
-li:active{
+#navbar:active{
   background-color:grey;
+}
+
+#list {
+  list-style-type: square;
+  padding: 2em;
+}
+
+#listlink {
+  color: azure;
+}
+
+body {
+  color: azure;
+  background-color: rgb(44, 44, 44);
 }

@@ -1,8 +1,3 @@
-let textHour = document.getElementById("inputHour").value;
-let textMin = document.getElementById("inputMin").value;
-let textSec = document.getElementById("inputSec").value;
-let textAngle = document.getElementById("inputAngle").value;
-console.log(textHour)
 function timeToSecond(hour, min, sec) {
   return hour*3600 + min * 60 + sec
 }
@@ -18,7 +13,7 @@ function secondToTime(sec) {
   if(sec < 10) {
     sec = '0' + sec
   }
-  return (`"${hour}h ${min}m ${sec}s"`) 
+  return (`${hour}h ${min}m ${sec}s`) 
 }
 
 function newOrbitalPeriod(oldPeriod, angle) {
@@ -26,8 +21,10 @@ function newOrbitalPeriod(oldPeriod, angle) {
 }
 
 function calcNewPeriod() {
+  let textHour = document.getElementById("inputHour").value;
+  let textMin = document.getElementById("inputMin").value;
+  let textSec = document.getElementById("inputSec").value;
+  let textAngle = document.getElementById("inputAngle").value;
   let result = secondToTime(newOrbitalPeriod(timeToSecond(parseInt(textHour), parseInt(textMin), parseInt(textSec)), parseInt(textAngle)))
   document.getElementById("result").innerHTML = result
-  console.log(result)
-  console.log(typeof(result))
 }

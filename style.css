@@ -5,6 +5,7 @@ html, body {
 
 canvas {
   display: block;
+  padding-top:5%;
 }
 
 ul {

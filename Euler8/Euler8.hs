@@ -1,10 +1,6 @@
-{-main = do
+main = do
     content <- readFile "data.txt"
-    print content
-   -- print . map readInt . lines $ content
-   -- print(parse(lines content))
-   -- largestAdj (parse(lines content))
-   -- print(parse(lines content))-}
+    print(show(largestAdj(parse(lines content))))
 
 readInt :: [Char] -> Int
 readInt = read
@@ -21,7 +17,7 @@ largestAdj :: [Int] -> Int
 largestAdj [] = 0
 largestAdj [x] = x
 largestAdj (x:xs)
-    | product (x : (take 12 xs)) > maxTail = product (x : (take 12 xs))
+    | product' (x : (take 12 xs)) > maxTail = product (x : (take 12 xs))
     | otherwise = maxTail
     where maxTail = largestAdj xs
 

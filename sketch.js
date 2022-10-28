@@ -6,6 +6,11 @@ let vy;
 let height;
 let width;
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+
 function setup() {
   height = 400;
   width = 400;

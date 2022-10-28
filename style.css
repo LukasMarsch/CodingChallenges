@@ -1,11 +1,12 @@
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 canvas {
   display: block;
   padding-top:5%;
+  padding-left: 0px;
 }
 
 ul {

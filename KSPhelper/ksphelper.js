@@ -27,5 +27,5 @@ function newOrbitalPeriod(oldPeriod, angle) {
 
 function calcNewPeriod() {
   result = secondToTime(newOrbitalPeriod(timeToSecond(parseInt(hour), parseInt(min), parseInt(sec)), parseInt(angle)))
-  document.getElemntById("result").innerHTML = result
+  document.getElementById("result").innerHTML = result
 }

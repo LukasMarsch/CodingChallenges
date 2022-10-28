@@ -14,9 +14,24 @@
         <li>  <a href="https://lukasmarsch.github.io/CodingChallenges/bball.html"> Bouncing Ball </a></li>
         <li>  <a href="https://lukasmarsch.github.io/CodingChallenges/KSPHelper/"> KSP Helper </a></li>
       </ul>
+    </main>
       <br>
       <h1>KSP Helper</h1>
-      <p> still under construction</p>
-    </main>
+    <p>
+      Here you can calculate thhe new orbital period of your satellite (mainly for KSP)
+    </p>
+    <p>
+      Input your current time here:
+    </p>
+    <input type ="text" placeholder="hour" id="inputHour">
+    <input type ="text" placeholder="min" id="inputMin">
+    <input type ="text" placeholder="sec" id="inputSec">
+    <p>
+      Input your phase shift here (in degree):
+    </p>
+    <input type ="text" placeholder="angle" id="inputAngle">
+    <button type ="button" onclick="calcNewPeriod();">Calculate</button>
+    <p id="result"></p>
+    <script src="ksphelper.js"></script>
   </body>
 </html>

@@ -18,7 +18,7 @@ function secondToTime(sec) {
   if(sec < 10) {
     sec = '0' + sec
   }
-  return hour + 'h' + min + 'm' + sec + 's' 
+  return hour.toString() + 'h' + min.toString() + 'm' + sec.toString() + 's' 
 }
 
 function newOrbitalPeriod(oldPeriod, angle) {

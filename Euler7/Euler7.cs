@@ -9,6 +9,7 @@ using System.Collections;
 class Primes{
     public static void Main(){
         Console.WriteLine(factorize(10001));
+        //correct answer is 104743
     }
 
     static long factorize(int input){

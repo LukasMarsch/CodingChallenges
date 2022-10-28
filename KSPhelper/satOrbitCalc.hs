@@ -4,10 +4,17 @@
 --neworbitalperiod 1 17 3 10 => 1h 19m 11s
 --the next cycle has to be 1h19m11s long to get 10 degree closer
 --don't forget the brackets in case you want to travel back (negative angel) 
-neworbitalperiod hour min sec angel =  timeToString(secToHour(div((hourToSec hour min sec) * (360 + angel)) 360))
+neworbitalperiod hour min sec angel =  timeToString(secToHour(div((hourToSec hour min sec) * 360) (360 + angel)))
 
+--calculates hour min sec into second
 hourToSec hour min sec = hour*3600 + min*60 + sec
 
+--calculates Seconds into min and hour
 secToHour sec = (div sec 3600, mod (div sec 60) 60, mod sec 60)
 
-timeToString (a,b,c) = (show a) ++ "h " ++ (if (b<11) then "0" else "") ++ (show b) ++ "m " ++ (if (c<10) then "0" else "") ++ (show c) ++ "s"
+--converts Int tripel to readable String
+timeToString (a,b,c) = (show a) ++ "h " ++ (stt b) ++ "m " ++ (stt c) ++ "s"
+
+--check if a num is < 10 and add leading 0
+stt x | x < 10 = "0" ++ (show x)
+      | otherwise = (show x)

@@ -20,3 +20,6 @@ mmerge ((x:xs), (y:ys))
 
 msplit x   = (take n x, drop n x)
     where n = div (length x) 2
+
+
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)

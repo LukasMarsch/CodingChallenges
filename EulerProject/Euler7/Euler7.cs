@@ -13,6 +13,7 @@ class Primes{
     }
 
     static long factorize(int input){
+        DateTime beginning = DateTime.Now;
         ArrayList Primes = new ArrayList();
         long counter = 2;
         Primes.Add(counter);
@@ -30,6 +31,8 @@ class Primes{
             }
         }
         Console.WriteLine(Primes.Count);
+        TimeSpan end = DateTime.Now - beginning;
+        Console.WriteLine(end);
         return (long)Primes[Primes.Count-1];
     }
 }

@@ -25,6 +25,6 @@ function calcNewPeriod() {
   let textMin = document.getElementById("inputMin").value;
   let textSec = document.getElementById("inputSec").value;
   let textAngle = document.getElementById("inputAngle").value;
-  let result = secondToTime(newOrbitalPeriod(timeToSecond(parseInt(textHour), parseInt(textMin), parseInt(textSec)), parseInt(textAngle)))
+  let result = secondToTime(newOrbitalPeriod(timeToSecond(parseInt(textHour), parseInt(textMin), parseInt(textSec)), parseFloat(textAngle)))
   document.getElementById("result").innerHTML = result
 }

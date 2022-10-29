@@ -3,6 +3,9 @@ function timeToSecond(hour, min, sec) {
 }
 
 function secondToTime(sec) {
+  if(isNaN(sec)){
+    return 'Please enter a number in all fields'
+  }
   let hour = Math.floor(sec / 3600)
   sec = sec % 3600
   let min = Math.floor(sec / 60)

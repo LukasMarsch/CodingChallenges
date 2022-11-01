@@ -3,6 +3,10 @@ html, body {
   padding: 0px;
 }
 
+body {
+  padding: 10px;
+}
+
 canvas {
   display: block;
 }
@@ -50,4 +54,24 @@ canvas {
 body {
   color: azure;
   background-color: rgb(44, 44, 44);
+}
+
+select {
+  list-style: square;;
+}
+
+#startdiv {
+  padding:5px;
+}
+
+#targetdiv {
+  padding:5px;
+}
+
+#calculate {
+  padding: 5px;
+}
+
+#calculate:hover {
+  background-color: purple;
 }

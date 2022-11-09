@@ -1,22 +1,41 @@
-﻿using Euler11;
-
-namespace Euler11
+﻿namespace Euler11
 {
     class main
     {
         public static void Main(String[] args){
             var t = new Table();
-            Console.WriteLine(t.cursor.position = 19);
-        
-            for(int i=0; i<100;i++){
-            Console.WriteLine(t.cursor.rightWithLineBreak());
+            var f = new fourAdjacent(t);
+            int max = 0;
+            while(t.cursor.position < 400){
+                // setup
+                int[] current = new int[4];
+                
+                try{
+                    current = f.FourInARow();
+                } catch {
+                    Console.WriteLine(t.cursor.position);
+                    t.cursor.rightWithLineBreak();
+                    continue;
+                }
+                int product = 1;
+                Array.ForEach(current, x => product *= x);
+                max = Math.Max(product, max);
+
+
+
+
+                /* for dbug purposes
+                * Console.WriteLine(t.cursor.position);
+                * 
+                *///finally
+                t.cursor.rightWithLineBreak();
             }
-            
+            Console.WriteLine(max);
         }
     }
        
 
-/*    class fourAdjacent
+    class fourAdjacent
     {
         public Table table{get; set;}
 
@@ -27,15 +46,20 @@ namespace Euler11
 
         public int[] FourInARow()
         {
-            Cursor<Table> c = new Euler11.Cursor<Table>();
-            c.cursor = table.cursor.value();
+            Cursor<Table> myCursor = new Cursor<Table>();
+            // create a duplicate of table cursor
+            myCursor.position = table.cursor.position;
+
             int[] result = new int[4];
-            for(int i = 0; i<4; i++){
-                    result[i] = table.values[c.right()];
-                }
+
+            for(int i=0; i<4; i++){
+                myCursor.right();
+                result[i] = table.Get(myCursor.position);
+            }
+        
             return result;
         }
-
+/*
         public int[] FourDown() 
         {
             int[] result = new int[4];
@@ -62,6 +86,6 @@ namespace Euler11
                 throw new Exception();
             }
             return result;
-        } 
-    }*/
+        } */
+    }
 }

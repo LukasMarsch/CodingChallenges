@@ -12,5 +12,16 @@ namespace Euler11
             };
             this.cursor = new Cursor<Table>();
         }
+
+        public int Get(int position){
+            if(position < 0 || position >= values.Count()){
+                throw new IndexOutOfRangeException("value at position " + position + "was out of range");
+            }
+            return values[position];
+        }
+
+        public int Get(){
+            return values[cursor.position];
+        }
     }
 }

@@ -55,6 +55,10 @@ namespace Euler11
             try {
                 right();
             } catch {
+                if(this.position == 399){
+                    position += 1;
+                    return position;
+                }
                 down();
                 try{
                     return left(19);

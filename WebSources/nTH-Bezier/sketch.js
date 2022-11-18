@@ -1,5 +1,5 @@
-var WIDTH = 1000;
-var HEIGHT = 1000;
+var WIDTH = 800;
+var HEIGHT = 800;
 
 class myBezier{
   constructor(points = [createVector(0,0), createVector(WIDTH, HEIGHT)], step = 0.001){

@@ -22,12 +22,11 @@ function draw() {
   v4 = lerpVector(v2, v0, i);
   push();
   strokeWeight(1);
-  stroke(i*255, 1/(i*255), 255-(255*i));
+  stroke(cos(count/500 - 1)*255, sin(count/500 - 1)*255, tan(count/500 - 1)*255);
   if(count % 15 == 0) { line(v3.x, v3.y, v4.x, v4.y); }
   pop();
-  print(count);
   point(lerpVector(v4, v3, i));
-  count+= 1000* step;
+  count++;
 }
 
 function lerpVector(v1, v2, amt){

@@ -7,12 +7,12 @@
     <meta charset="utf-8" />
   </head>
 
-  <body onload="load()">
+  <body>
     <main>
       <ul id="navul">
-        <li id="navbar">  <a id="navlink" href="https://lukasmarsch.github.io/CodingChallenges/index.html"> Index </a></li>
-        <li id="navbar">  <a id="navlink" href="https://lukasmarsch.github.io/CodingChallenges/WebSources/bball.html"> Bouncing Ball </a></li>
-        <li id="navbar">  <a id="navlink" href="https://lukasmarsch.github.io/CodingChallenges/KSPHelper/index.html"> KSP Helper </a></li>
+        <li class="navbar">  <a class="navlink" href="https://lukasmarsch.github.io/CodingChallenges/index.html"> Index </a></li>
+        <li class="navbar">  <a class="navlink" href="https://lukasmarsch.github.io/CodingChallenges/WebSources/bball.html"> Bouncing Ball </a></li>
+        <li class="navbar">  <a class="navlink" href="https://lukasmarsch.github.io/CodingChallenges/KSPHelper/index.html"> KSP Helper </a></li>
       </ul>
     </main>
     <br>
@@ -24,23 +24,25 @@
         <label for="Start">Start:</label>
         <select name="Start" id="Start">
             <option value="Kerbin">Kerbin</option>
-            <option value="LKO">LKO</option>
+            <option value="Low Kerbin Orbit">Low Kerbin Orbit</option>
         </select>
     </div>
     <div id="targetdiv">
         <label for="Target">Target:</label>
         <select name="Target" id="Target">
-            <option value="LKO">LKO</option>
-            <option value="Kerbin Ejection">Kerbin Ejection</option>
+            <option value="Low Kerbin Orbit">LKO</option>
             <option value="Keostationary">Keostationary</option>
-            <option value="HKO">HKO</option>
+            <option value="Mun Transfer">Mun Transfer</option>
+            <option value="Mun Orbit">Mun Orbit</option>
             <option value="Mun">Mun</option>
+            <option value="Minmus Transfer">Minmus Transfer</option>
+            <option value="Minmus Orbit">Minmus Orbit</option>
             <option value="Minmus">Minmus</option>
         </select>
     </div>
-    <button id="calculate" onclick=calculateDeltaV()">GO</button>
+    <button id="calculate" onclick=calculateDeltaV()>GO</button>
     <label id="Result"></label>
-    <script src="deltav.ts"></script>
-    <script src="LinkedList.ts"></script>
+    <script src="deltav.js" type="text/javascript"></script>
+    <script src="LinkedList.js" type="text/javascript"></script>
   </body>
 </html>

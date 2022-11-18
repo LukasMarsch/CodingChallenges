@@ -1,4 +1,4 @@
-export class Treenode {
+class Treenode {
     id?: String;
     children:Treenode[] = [];
     parent?: Treenode;
@@ -22,7 +22,6 @@ export class Treenode {
     }
 
     public getChild(wantedId: String): Treenode[] | undefined {
-        let correct:Treenode;
         let success = false;
         for(let i=0; i<this.children.length; i++){
             if((this.children[i]).getId() === wantedId){
@@ -104,20 +103,4 @@ export class Treenode {
 
 
     
-}
-
-
-
-
-////////////////////////////////////////////////////////
-
-
-
-
-
-function load(){
-    import * as data from "./data.json";
-    for(var value in data){
-        current: Treenode = new Treenode(value.id, value.children, value.parent, value.value);
-    }
 }

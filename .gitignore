@@ -3,6 +3,9 @@ bin
 obj
 *.csproj
 
+# Vscode config Folder
+.vscode
+
 # Prerequisites
 *.d
 

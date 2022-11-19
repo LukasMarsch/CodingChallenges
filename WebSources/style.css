@@ -11,14 +11,14 @@ canvas {
   display: block;
 }
 
-#navul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  position: fixed;
+.navgrid {
+  display: grid;
+  position: relative;
+  justify-content: center;
+  grid-auto-columns: max-content;
 }
 
-#navbar {
+.navbar {
   font-family: Arial, Helvetica, sans-serif;
   display: inline;
   background-color: #404040;
@@ -29,16 +29,44 @@ canvas {
   padding:5px;
 }
 
+#index {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+}
+
+#bball {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+}
+
+#ksphelper {
+  grid-column: 3;
+  grid-row: 1;
+  text-align: center;
+}
+
+#ct-challenges {
+  grid-column: 4;
+  grid-row: 1;
+  text-align: center;
+}
+
 #navlink {
   margin: 10px;
+  
+}
+
+a {
   color:azure;
 }
 
-#navbar:hover {
+.navbar:hover {
   background-color: purple;
 }
 
-#navbar:active{
+.navbar:active{
   background-color:grey;
 }
 

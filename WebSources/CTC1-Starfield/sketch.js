@@ -5,6 +5,12 @@ var centerY = HEIGHT/2;
 var totalSize = 1000;
 var stars = [];
 
+function windowResized() {
+  resizeCanvas(windowWidth-20, windowHeight-50);
+  HEIGHT = windowHeight-50;
+  WIDTH = windowWidth-20;
+}
+
 function setup() {
   createCanvas(WIDTH, HEIGHT);
   stroke(0xff5555);
@@ -12,6 +18,9 @@ function setup() {
 }
 
 function draw() {
+  
+  centerX = WIDTH/2;
+  centerY = HEIGHT/2;
   background(10);
   let slen = stars.length;
   //if(slen > totalSize) stars = []; slen = 0;

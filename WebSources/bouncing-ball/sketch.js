@@ -7,9 +7,9 @@ let height;
 let width;
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  height = windowHeight;
-  width = windowWidth
+  resizeCanvas(windowWidth-20, windowHeight-50);
+  height = windowHeight-50;
+  width = windowWidth-20;
 }
 
 

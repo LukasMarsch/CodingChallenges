@@ -1,5 +1,6 @@
 var WIDTH = 800;
 var HEIGHT = 800;
+var newPoints = [];
 
 class myBezier{
   constructor(points = [createVector(0,0), createVector(WIDTH, HEIGHT)], step = 0.001){
@@ -7,6 +8,10 @@ class myBezier{
     this.t = 0.0;
     this.step = step;
   }  
+
+  resetT(){
+    this.t = 0.0;
+  };
   
   myupdate(){
     this.t+= this.step;
@@ -46,11 +51,36 @@ function setup() {
   
   
   
-  background(44);
+  background(90);
 }
 
 function draw() {
   a.myupdate();
-  b.myupdate();
+  for(let i = 0; i<newPoints.length; i++){
+    point(newPoints[i].x, newPoints[i].y);
+  }
 }
 
+function removeA(){
+  a = new myBezier(createVector(0,0));
+}
+
+function addToA(){
+  a = new myBezier(newPoints);
+  newPoints = [];
+}
+
+function clearCanvas(){
+  background(90);
+}
+
+function mouseClicked(){
+  if(mouseX > WIDTH || mouseY > HEIGHT || mouseX < 0 || mouseY < 0){ return; }
+  append(newPoints,createVector(mouseX, mouseY));
+  print(createVector(mouseX, mouseY));
+}
+
+function resetT(){
+  a.resetT();
+  background(90);
+}

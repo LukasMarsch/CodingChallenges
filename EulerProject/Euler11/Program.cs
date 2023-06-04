@@ -35,6 +35,30 @@
     }
        
 
+    class fourAdjacent
+    {
+        public Table table{get; set;}
+
+        public fourAdjacent(Table table)
+        {
+            this.table = table; 
+        }
+
+        public int[] FourInARow()
+        {
+            Cursor<Table> myCursor = new Cursor<Table>();
+            // create a duplicate of table cursor
+            myCursor.position = table.cursor.position;
+
+            int[] result = new int[4];
+
+            for(int i=0; i<4; i++){
+                myCursor.right();
+                result[i] = table.Get(myCursor.position);
+            }
+        
+            return result;
+        }
 /*
         public int[] FourDown() 
         {

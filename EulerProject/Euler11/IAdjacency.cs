@@ -1,6 +1,6 @@
 namespace Euler11
 {
-    interface IAdjacency {
-        public int getAdjacent(Table table);
+   interface IAdjacency {
+        public int getAdjacentProduct(Table table);
     }
 }

@@ -2,7 +2,7 @@ namespace Euler11
 {
     class RowAdjacent: IAdjacency
     {
-        public int getAdjacent(Table table)
+        public int getAdjacentProduct(Table table)
         {
             Cursor<Table> myCursor = new Cursor<Table>();
             // create a duplicate of table cursor
@@ -22,7 +22,10 @@ namespace Euler11
 
     class ColumnAdjacent: IAdjacency
     {
-        public int getAdjacent(Table table)
+        /*
+            returns the Product of 4 adjacent tiles on the current cursor position downwards
+        */
+        public int getAdjacentProduct(Table table)
         {
             Cursor<Table> myCursor = new Cursor<Table>();
             myCursor.position = table.cursor.position;
@@ -39,7 +42,8 @@ namespace Euler11
                 result.Add(table.Get(myCursor.position));
             }
             int product = 1;
-            List<int>.ForEach(result, x => product *= x);
+            result.ForEach(x => product *= x);
+            return product;
         }
     }
 }

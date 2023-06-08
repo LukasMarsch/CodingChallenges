@@ -1,10 +1,10 @@
 ﻿namespace Euler11
 {
-    class main
+    class Euler11
     {
         public static void Main(String[] args){
             var t = new Table();
-            var f = new fourAdjacent(t);
+            var f = new FourAdjacent(t);
             int max = 0;
             while(t.cursor.position < 400){
                 // setup
@@ -35,57 +35,72 @@
     }
        
 
-    class fourAdjacent
+    class FourAdjacent
     {
         public Table table{get; set;}
 
-        public fourAdjacent(Table table)
+        public FourAdjacent(Table table)
         {
             this.table = table; 
         }
 
         public int[] FourInARow()
         {
-            Cursor<Table> myCursor = new Cursor<Table>();
-            // create a duplicate of table cursor
-            myCursor.position = table.cursor.position;
+          Cursor<Table> cursor = new Cursor<Table>();
+          // create a duplicate of table cursor
+          cursor.position = table.cursor.value();
+          // create an array for the relevant numbers
+          int[] result = new int[4];
 
-            int[] result = new int[4];
-
-            for(int i=0; i<4; i++){
-                myCursor.right();
-                result[i] = table.Get(myCursor.position);
-            }
-        
-            return result;
+          // process pick the 4 relevant positions including the first and move the cursor inbetween
+          result[0] = table.Get(cursor.value());
+          for(int i = 1; i<5; i++) {
+            cursor.right();
+            result[i] = table.Get(cursor.value());
+          }
+          return result;
         }
-/*
+
         public int[] FourDown() 
         {
-            int[] result = new int[4];
-            for(int i = 0; i<4; i++)
-            {
-                int c = table.down();
-                result[i] = table.values[c];
-            }
-            return result;
+          Cursor<Table> cursor = new Cursor<Table>();
+          cursor.position = table.cursor.value();
+          int[] result = new int[4];
+
+          result[0] = table.values[cursor.value()];
+          for(int i = 1; i<5; i++) {
+            cursor.down();
+            result[i] = table.values[cursor.value()];
+          }
+          return result;
         }
 
-        public int[] FourUpLeft()
-        {
-            int myCursor = table.cursor;
-            int[] result = new int[4];
-            try{
-                for(int i=0; i<4; i++){
-                    myCursor;
-                    table.left();
-                    result[i] = table.values[]
-                
-                }
-            } catch {
-                throw new Exception();
-            }
-            return result;
-        } */
+        public int[] FourUpLeft() {
+          Cursor<Table> cursor = new Cursor<Table>();
+          cursor.position = table.cursor.value();
+          int[] result = new int[4];
+          
+          result[0] = table.values[cursor.value()];
+          for(int i = 1; i<5; i++) {
+            cursor.up();
+            cursor.left();
+            result[i] = table.values[cursor.value()];
+          }
+          return result;
+        }
+
+        public int[] FourUpRight() {
+          Cursor<Table> cursor = new Cursor<Table>();
+          cursor.position = table.cursor.value();
+          int[] result = new int[4];
+
+          result[0] = table.values[cursor.value()];
+          for(int i = 1; i < 5; i++) {
+            cursor.up();
+            cursor.right();
+            result[i] = table.values[cursor.value()];
+          }
+          return result;
+        }
     }
 }

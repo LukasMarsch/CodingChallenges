@@ -1,15 +1,9 @@
 namespace Euler11;
 
-class FourAdjacent
+static class FourAdjacent
 {
-  public Table table{get; set;}
 
-  public FourAdjacent(Table table)
-  {
-    this.table = table; 
-  }
-
-  public int[] FourInARow()
+  public static int[] FourInARow(Table table)
   {
     Cursor<Table> cursor = new Cursor<Table>();
     // create a duplicate of table cursor
@@ -23,11 +17,11 @@ class FourAdjacent
       cursor.right();
       result[i] = table.Get(cursor.value());
     }
-
+  Euler11.ArrayPrint(result);
   return result;
   }
 
-  public int[] FourDown() 
+  public static int[] FourDown(Table table) 
   {
     Cursor<Table> cursor = new Cursor<Table>();
     cursor.position = table.cursor.value();
@@ -38,10 +32,11 @@ class FourAdjacent
       cursor.down();
       result[i] = table.values[cursor.value()];
     }
+  Euler11.ArrayPrint(result);
     return result;
   }
 
-  public int[] FourUpLeft() {
+  public static int[] FourUpLeft(Table table) {
     Cursor<Table> cursor = new Cursor<Table>();
     cursor.position = table.cursor.value();
     int[] result = new int[4];
@@ -52,10 +47,12 @@ class FourAdjacent
       cursor.left();
       result[i] = table.values[cursor.value()];
     }
+  Euler11.ArrayPrint(result);
+    
     return result;
   }
 
-  public int[] FourUpRight() {
+  public static int[] FourUpRight(Table table) {
     Cursor<Table> cursor = new Cursor<Table>();
     cursor.position = table.cursor.value();
     int[] result = new int[4];
@@ -66,6 +63,7 @@ class FourAdjacent
       cursor.right();
       result[i] = table.values[cursor.value()];
     }
+  Euler11.ArrayPrint(result);
     return result;
   }
 }

@@ -1,60 +1,79 @@
 ﻿namespace Euler11;
 
-enum Directions : Func<FourAdjacent, int[]>
-{
-    Func<FourAdjacent, int[]> right = f => f.FourInARow(),
-    Func<FourAdjacent, int[]> down  = f => f.FourDown(),
-    Func<FourAdjacent, int[]> upright = f => f.FourUpRight(),
-    Func<FourAdjacent, int[]> upleft  = f => f.FourUpLeft()
+enum Direction {
+  Right,
+  Down,
+  UpLeft,
+  UpRight
 }
 
 class Euler11
 {
   public static void Main(String[] args){
-    var t = new Table();
-    var f = new FourAdjacent(t);
+    Table t = new Table();
     int max = 0;
     while(t.cursor.value() < 400)
     {
-      max = Math.Max(max, getMax(f));
+      
+      var temp = getMax(t);
+      max = Math.Max(max, temp);
       t.cursor.rightWithLineBreak();
     }
-    Console.WriteLine(max);
+    // Console.WriteLine(max);
   }
 
-  // returns the maximum product of all directions from the given field
-  private int getMax(FourAdjacent field)
+  // returns the maximum product of all directions from the given table
+  private static int getMax(Table table)
   {
-    int[] up = TryInvoke(Directions.up, field);
-    int[] right = TryInvoke(Directions.right, field);
-    int[] upleft = TryInvoke(Directions.upleft, field);
-    int[] upright = TryInvoke(Directions.upright, field);
+    int[] up      = TryInvoke(Direction.Right, table);
+    int[] right   = TryInvoke(Direction.Down, table);
+    int[] upleft  = TryInvoke(Direction.UpLeft, table);
+    int[] upright = TryInvoke(Direction.UpRight, table);
 
     int max = ArrayProduct(up);
-    max = Math.max(ArrayProduct(right), max);
-    max = Math.max(ArrayProduct(upleft), max);
-    max = Math.max(ArrayProduct(upright), max);
+    max = Math.Max(ArrayProduct(right), max);
+    max = Math.Max(ArrayProduct(upleft), max);
+    max = Math.Max(ArrayProduct(upright), max);
     return max;
   }
 
   // Returns an array of values or an empty array, if an error was thrown
-  public int[] TryInvoke(Func<FourAdjacent, int[]> function, FourAdjacent fourAdjacent) {
-    int[] result;
+  public static int[] TryInvoke(Direction d, Table t) {
     try
     {
-      result = function(fourAdjacent);
+      switch (d)
+      {
+        case Direction.Right : return FourAdjacent.FourInARow(t); 
+        case Direction.Down : return FourAdjacent.FourDown(t);
+        case Direction.UpLeft : return FourAdjacent.FourUpLeft(t);
+        case Direction.UpRight : return FourAdjacent.FourUpRight(t);
+          default: throw new NotSupportedException($"Case {d} not supported");
+      }
     }
     catch (System.Exception)
     {
-      int[] result = new int[0];
+      return new int[0] {};
     }
-    return result;
   }
 
-  private int ArrayProduct(int[] array)
+  public static void ArrayPrint(int[] array)
+  {
+    Console.Write(@"{");
+    foreach (var item in array)
+    {
+      Console.Write($"{item}, ");
+    }
+    Console.Write(@"}" + "\n");
+  }
+
+  private static int ArrayProduct(int[] array)
   {
     int product = 1;
-    Array.ForEach(array, x => product *= x);
+    foreach (var item in array)
+    {
+      product *= item;
+    }
+    Console.WriteLine(product);
     return product;
   }
 }

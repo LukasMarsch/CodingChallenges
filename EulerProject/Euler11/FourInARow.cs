@@ -1,49 +1,71 @@
-namespace Euler11
+namespace Euler11;
+
+class FourAdjacent
 {
-    class RowAdjacent: IAdjacency
-    {
-        public int getAdjacentProduct(Table table)
-        {
-            Cursor<Table> myCursor = new Cursor<Table>();
-            // create a duplicate of table cursor
-            myCursor.position = table.cursor.position;
+  public Table table{get; set;}
 
-            int[] result = new int[4];
+  public FourAdjacent(Table table)
+  {
+    this.table = table; 
+  }
 
-            for(int i=0; i<4; i++){
-                myCursor.right();
-                result[i] = table.Get(myCursor.position);
-            }
-            int product = 1;
-            Array.ForEach(result, x => product *= x);
-            return product;
-        }
+  public int[] FourInARow()
+  {
+    Cursor<Table> cursor = new Cursor<Table>();
+    // create a duplicate of table cursor
+    cursor.position = table.cursor.value();
+    // create an array for the relevant numbers
+    int[] result = new int[4];
+
+    // process pick the 4 relevant positions including the first and move the cursor inbetween
+    result[0] = table.Get(cursor.value());
+    for(int i = 1; i<5; i++) {
+      cursor.right();
+      result[i] = table.Get(cursor.value());
     }
 
-    class ColumnAdjacent: IAdjacency
-    {
-        /*
-            returns the Product of 4 adjacent tiles on the current cursor position downwards
-        */
-        public int getAdjacentProduct(Table table)
-        {
-            Cursor<Table> myCursor = new Cursor<Table>();
-            myCursor.position = table.cursor.position;
+  return result;
+  }
 
-            List<int> result = new List<int>();
+  public int[] FourDown() 
+  {
+    Cursor<Table> cursor = new Cursor<Table>();
+    cursor.position = table.cursor.value();
+    int[] result = new int[4];
 
-            for(int i=0; i<4; i++){
-                try{
-                    myCursor.down();
-                } catch {
-                    break;
-                }
-                
-                result.Add(table.Get(myCursor.position));
-            }
-            int product = 1;
-            result.ForEach(x => product *= x);
-            return product;
-        }
+    result[0] = table.values[cursor.value()];
+    for(int i = 1; i<5; i++) {
+      cursor.down();
+      result[i] = table.values[cursor.value()];
     }
+    return result;
+  }
+
+  public int[] FourUpLeft() {
+    Cursor<Table> cursor = new Cursor<Table>();
+    cursor.position = table.cursor.value();
+    int[] result = new int[4];
+    
+    result[0] = table.values[cursor.value()];
+    for(int i = 1; i<5; i++) {
+      cursor.up();
+      cursor.left();
+      result[i] = table.values[cursor.value()];
+    }
+    return result;
+  }
+
+  public int[] FourUpRight() {
+    Cursor<Table> cursor = new Cursor<Table>();
+    cursor.position = table.cursor.value();
+    int[] result = new int[4];
+
+    result[0] = table.values[cursor.value()];
+    for(int i = 1; i < 5; i++) {
+      cursor.up();
+      cursor.right();
+      result[i] = table.values[cursor.value()];
+    }
+    return result;
+  }
 }

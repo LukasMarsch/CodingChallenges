@@ -12,11 +12,11 @@ static class FourAdjacent
     int[] result = new int[4];
 
     // process pick the 4 relevant positions including the first and move the cursor inbetween
-    result[0] = table.Get(cursor.position);
+    result[0] = table.Get();
     for(int i = 1; i < 5; i++)
     {
-      Console.WriteLine(i);
-      cursor.right();
+      cursor.Right();
+      Console.WriteLine($"{i}: {table.Get(cursor.position)}");
       result[i] = table.Get(cursor.position);
     }
     Console.WriteLine($"{result[0]}");
@@ -31,7 +31,7 @@ static class FourAdjacent
 
     result[0] = table.Get(cursor.position);
     for(int i = 1; i<5; i++) {
-      cursor.down();
+      cursor.Down();
       result[i] = table.Get(cursor.position);
     }
     Euler11.ArrayPrint(result);
@@ -45,8 +45,8 @@ static class FourAdjacent
     
     result[0] = table.Get(cursor.position);
     for(int i = 1; i<5; i++) {
-      cursor.up();
-      cursor.left();
+      cursor.Up();
+      cursor.Left();
       result[i] = table.Get(cursor.position);
     }
   Euler11.ArrayPrint(result);
@@ -61,8 +61,8 @@ static class FourAdjacent
 
     result[0] = table.Get(cursor.position);
     for(int i = 1; i < 5; i++) {
-      cursor.up();
-      cursor.right();
+      cursor.Up();
+      cursor.Right();
       result[i] = table.Get(cursor.position);
     }
   Euler11.ArrayPrint(result);

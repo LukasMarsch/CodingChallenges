@@ -8,7 +8,7 @@ namespace Euler11
             this.position = -1;
         }
 
-        public int right(){
+        public int Right(){
             // Zeilenumbruch
             if(position%20 == 19){
                 throw new IndexOutOfRangeException("Zeilenumbruch");
@@ -17,7 +17,7 @@ namespace Euler11
             return position +=  1;
         }
         
-        public int left(){
+        public int Left(){
             // Zeilenanfang
             if(position%20 == 0){
                 throw new IndexOutOfRangeException("Zeilenanfang");
@@ -25,14 +25,14 @@ namespace Euler11
             return position -= 1;
         }
 
-        public int left(int a){
+        public int Left(int a){
             for(int i = 0; i<a; i++){
-                left();
+                Left();
             }
             return position;
         }
 
-        public int up(){
+        public int Up(){
             // erste Zeile
             if(position < 20){
                 throw new IndexOutOfRangeException("Erste Zeile");
@@ -40,7 +40,7 @@ namespace Euler11
             return position -= 20;
         }
 
-        public int down(){
+        public int Down(){
             //letzte Zeile
             if(position >= 380){
                 throw new IndexOutOfRangeException("letzte Zeile");
@@ -48,18 +48,18 @@ namespace Euler11
             return position += 20;
         }
 
-        public int rightWithLineBreak()
+        public int RightWithLineBreak()
         {
             try {
-                right();
+                Right();
             } catch {
                 if(this.position == 399){
                     position += 1;
                     return position;
                 }
-                down();
+                Down();
                 try{
-                    return left(19);
+                    return Left(19);
                 } catch {
                     throw new Exception();
                 }

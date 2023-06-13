@@ -17,7 +17,7 @@ class Euler11
       
       var temp = getMax(t);
       max = Math.Max(max, temp);
-      t.cursor.rightWithLineBreak();
+      t.cursor.RightWithLineBreak();
     }
     // Console.WriteLine(max);
   }
@@ -47,7 +47,7 @@ class Euler11
         case Direction.Down : return FourAdjacent.FourDown(t);
         case Direction.UpLeft : return FourAdjacent.FourUpLeft(t);
         case Direction.UpRight : return FourAdjacent.FourUpRight(t);
-          default: throw new NotSupportedException($"Case {d} not supported");
+        default: throw new NotSupportedException($"Case {d} not supported");
       }
     }
     catch (System.Exception)
@@ -68,12 +68,14 @@ class Euler11
 
   private static int ArrayProduct(int[] array)
   {
-    int product = 1;
-    foreach (var item in array)
-    {
-      product *= item;
-    }
-    Console.WriteLine(product);
-    return product;
+    Console.WriteLine(array.Length);
+    // int product = 1;
+    // for(int i = 1; i < 4; i++)
+    // {
+    //   product *= array[i];
+    // }
+    // Console.WriteLine(product);
+    // return product;
+    return 42;
   }
 }

@@ -8,8 +8,6 @@ namespace Euler11
             this.position = -1;
         }
 
-        public int value() => position;
-
         public int right(){
             // Zeilenumbruch
             if(position%20 == 19){

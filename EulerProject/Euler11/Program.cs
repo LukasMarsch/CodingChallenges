@@ -1,6 +1,6 @@
 ﻿namespace Euler11;
 
-enum Direction {
+public enum Direction {
   Right,
   Down,
   UpLeft,
@@ -12,7 +12,7 @@ class Euler11
   public static void Main(String[] args){
     Table t = new Table();
     int max = 0;
-    while(t.cursor.value() < 400)
+    while(t.cursor.position < 400)
     {
       
       var temp = getMax(t);
@@ -25,15 +25,15 @@ class Euler11
   // returns the maximum product of all directions from the given table
   private static int getMax(Table table)
   {
-    int[] up      = TryInvoke(Direction.Right, table);
-    int[] right   = TryInvoke(Direction.Down, table);
-    int[] upleft  = TryInvoke(Direction.UpLeft, table);
-    int[] upright = TryInvoke(Direction.UpRight, table);
-
-    int max = ArrayProduct(up);
-    max = Math.Max(ArrayProduct(right), max);
-    max = Math.Max(ArrayProduct(upleft), max);
-    max = Math.Max(ArrayProduct(upright), max);
+    int max = 0;
+    foreach(Direction d in Enum.GetValues(typeof(Direction)))
+    {
+      int[] temp = TryInvoke(d, table);
+      max = Math.Max(max, ArrayProduct(temp));
+      Console.WriteLine($"{d} at {table.cursor.position}");
+      ArrayPrint(temp);
+    }
+    Console.WriteLine("----------------");
     return max;
   }
 
@@ -59,7 +59,7 @@ class Euler11
   public static void ArrayPrint(int[] array)
   {
     Console.Write(@"{");
-    foreach (var item in array)
+    foreach (int item in array)
     {
       Console.Write($"{item}, ");
     }

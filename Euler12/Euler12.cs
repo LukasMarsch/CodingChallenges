@@ -4,17 +4,25 @@ class Program
 {
   public static void Main(String[] args)
   {
-    List<uint> triangleNums = new List<uint>(1000);
+    Stack<uint> triangleNums = new Stack<uint>();
     uint i = 1;
-    triangleNums.Add(i);
+    triangleNums.Push(i);
     while(i < 1000)
     {
       i++;
-      triangleNums.Add(i + triangleNums[triangleNums.Count - 1]);
+      triangleNums.Push(i + triangleNums.Peek());
     }
-    foreach (var item in triangleNums)
+    try
     {
-      Console.Write($"{item}, ");
+      while(triangleNums.Peek() != null)
+      {
+        Console.Write($"{triangleNums.Pop()}, ");
+      }   
     }
+    catch (System.Exception)
+    {
+      Console.Write("\nfinished");
+    }
+
   }
 }

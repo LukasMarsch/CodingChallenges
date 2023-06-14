@@ -19,28 +19,51 @@ class Program
     uint current = 1;
     uint i = 1;
     uint numOfDivisors = 0;
+    uint max = 0;
     while(numOfDivisors < 500)
     {
       current = i;
       current += prev;
       numOfDivisors = getNumOfDivisors(current);
       prev = current;
+      i++;
+      if(numOfDivisors > max)
+      {
+        max = numOfDivisors;
+        Console.WriteLine(numOfDivisors);
+      }
     }
     Console.Write($"{current} -> {numOfDivisors}");
   }
 
   private static uint getNumOfDivisors(uint n) 
   {
+    // Stack to store the valid divisors
     Stack<uint> divisors = new Stack<uint>();
-    for (uint i = (uint) Math.Ceiling((double)n/2) + 1; i > 0;  i--)
+
+    // create an array with all possible divisors
+    uint[] arr = new uint[(int) Math.Ceiling((double)n/2) + 1];
+
+    // and fill it
+    for (uint i = 0; i < arr.Length; i++)
+    {
+      arr[i] = i + 1;
+    }
+
+    // Form a list from it, so we can remove values we don't need to test
+    List<uint> iter = new List<uint>(arr);
+
+    // try every value
+    for(uint i = (uint) iter.Count - 1; i > 0; i--)
     {
       if(n % i == 0)
       {
         divisors.Push(i); 
+        divisors.Push((uint)n/i);
+        iter.Remove((uint) n/i);
       }
     }
     divisors.Push(n);
-    foreach(uint i in divisors) Console.Write($"{i}, "); Console.Write("\n\n");
     return (uint) divisors.Count;
   }
 }

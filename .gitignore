@@ -3,6 +3,9 @@ bin
 obj
 *.csproj
 
+# Vscode config Folder
+.vscode
+
 # Prerequisites
 *.d
 
@@ -56,3 +59,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.idea/

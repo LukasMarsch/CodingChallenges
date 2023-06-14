@@ -3,8 +3,9 @@
  * we can simplify this a little bit and say each number consists of its predecessor triangle num + itself triangleNum(2345) = triangleNum(2344) + 2345;
  * 
  * Now we need to find every divisor of these numbers.
- * There isn't a great way to do this but we can again simplify it a little but with a set<tuple<uint, list<uint>>
- * if we know triangleNum(1000) is divisible by 250250, we can look up what divisors we found for 250250 and can just add them to our list of divisors
+ * We can simplify our search by realizing every n % i == 0 produces a n/i = k, which has n % k == 0
+ * This limits our trial to Sqrt(n) values at maximum
+ * And we have blazingly fast results
  */
 namespace Euler12;
 
@@ -30,7 +31,7 @@ class Program
       if(numOfDivisors > max)
       {
         max = numOfDivisors;
-        Console.WriteLine(numOfDivisors);
+        Console.WriteLine($"[{i}]{current} -> {numOfDivisors}");
       }
     }
     Console.Write($"{current} -> {numOfDivisors}");
@@ -42,7 +43,7 @@ class Program
     Stack<uint> divisors = new Stack<uint>();
 
     // create an array with all possible divisors
-    uint[] arr = new uint[(int) Math.Ceiling((double)n/2) + 1];
+    uint[] arr = new uint[(int) Math.Ceiling(Math.Sqrt(n))];
 
     // and fill it
     for (uint i = 0; i < arr.Length; i++)
@@ -53,17 +54,37 @@ class Program
     // Form a list from it, so we can remove values we don't need to test
     List<uint> iter = new List<uint>(arr);
 
+    if((uint) Math.Sqrt(n) == Math.Sqrt(n))
+    {
+      divisors.Push((uint) Math.Sqrt(n));
+      for(uint i = 1; i < (uint) Math.Sqrt(n); i++)
+      {
+        if(n % i == 0)
+        {
+          divisors.Push(i);
+          divisors.Push(n/i);
+        }
+      }
+      return (uint) divisors.Count;
+    }
     // try every value
     for(uint i = (uint) iter.Count - 1; i > 0; i--)
     {
       if(n % i == 0)
       {
         divisors.Push(i); 
-        divisors.Push((uint)n/i);
+        if(!divisors.Contains((uint) n/i))
+        {
+          divisors.Push((uint)n/i);
+        }
         iter.Remove((uint) n/i);
       }
     }
-    divisors.Push(n);
+    // foreach (var item in divisors)
+    // {
+    //   Console.Write($"{item}, ");
+    // }
+    // Console.Write("\n\n");
     return (uint) divisors.Count;
   }
 }

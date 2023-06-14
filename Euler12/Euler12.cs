@@ -3,41 +3,88 @@
  * we can simplify this a little bit and say each number consists of its predecessor triangle num + itself triangleNum(2345) = triangleNum(2344) + 2345;
  * 
  * Now we need to find every divisor of these numbers.
- * There isn't a great way to do this but we can again simplify it a little but with a set<tuple<uint, list<uint>>
- * if we know triangleNum(1000) is divisible by 250250, we can look up what divisors we found for 250250 and can just add them to our list of divisors
+ * We can simplify our search by realizing every n % i == 0 produces a n/i = k, which has n % k == 0
+ * This limits our trial to Sqrt(n) values at maximum
+ * And we have blazingly fast results
  */
 namespace Euler12;
 
+using System.Collections;
+
 class Program
 {
+  // static Hashtable cache;
   public static void Main(String[] args)
   {
-    Stack<uint> triangleNums = new Stack<uint>();
-    // HashSet<Tuple<uint, List<uint>> = new HashSet<Tuple<uint, List<uint>>();
+    uint prev = 0;
+    uint current = 1;
     uint i = 1;
-    triangleNums.Push(i);
     uint numOfDivisors = 0;
-    while(numOfDivisors < 3 && i < 300)
+    uint max = 0;
+    while(numOfDivisors < 500)
     {
+      current = i;
+      current += prev;
+      numOfDivisors = getNumOfDivisors(current);
+      prev = current;
       i++;
-      triangleNums.Push(i + triangleNums.Peek());
-      Console.WriteLine(getNumOfDivisors(triangleNums.Peek()));
-      Console.WriteLine(numOfDivisors);
+      if(numOfDivisors > max)
+      {
+        max = numOfDivisors;
+        Console.WriteLine($"[{i}]{current} -> {numOfDivisors}");
+      }
     }
-    Console.Write($"{triangleNums.Pop()} -> {numOfDivisors} Divisors");
+    Console.Write($"{current} -> {numOfDivisors}");
   }
 
   private static uint getNumOfDivisors(uint n) 
   {
+    // Stack to store the valid divisors
     Stack<uint> divisors = new Stack<uint>();
-    for (int i = 1; i < (int) Math.Floor((double)n/2); i++)
+
+    // create an array with all possible divisors
+    uint[] arr = new uint[(int) Math.Ceiling(Math.Sqrt(n))];
+
+    // and fill it
+    for (uint i = 0; i < arr.Length; i++)
     {
-      if(i % n == 0)
+      arr[i] = i + 1;
+    }
+
+    // Form a list from it, so we can remove values we don't need to test
+    List<uint> iter = new List<uint>(arr);
+
+    if((uint) Math.Sqrt(n) == Math.Sqrt(n))
+    {
+      divisors.Push((uint) Math.Sqrt(n));
+      for(uint i = 1; i < (uint) Math.Sqrt(n); i++)
       {
-        divisors.Push((uint)i);
-        Console.WriteLine(i);
+        if(n % i == 0)
+        {
+          divisors.Push(i);
+          divisors.Push(n/i);
+        }
+      }
+      return (uint) divisors.Count;
+    }
+    // try every value
+    for(uint i = (uint) iter.Count - 1; i > 0; i--)
+    {
+      if(n % i == 0)
+      {
+        divisors.Push(i); 
+        if(!divisors.Contains((uint) n/i))
+        {
+          divisors.Push((uint)n/i);
+        }
+        iter.Remove((uint) n/i);
       }
     }
-    return (uint)divisors.Count;
+    // foreach (var item in divisors)
+    // {
+    //   Console.Write($"{item}, ");
+    // }
+    // Console.Write("\n\n");
+    return (uint) divisors.Count;
   }
 }

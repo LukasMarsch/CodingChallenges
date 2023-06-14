@@ -12,33 +12,42 @@ class Euler11
   public static void Main(String[] args){
     Table t = new Table();
     int max = 0;
+    int maxPos = 0;
+    String dir = "";
     while(t.cursor.position < 400)
     {
-      
-      var temp = getMax(t);
-      max = Math.Max(max, temp);
+      Tuple<int, String> temp = getMax(t);
+      if(max < temp.Item1)
+      {
+        max = temp.Item1;
+        maxPos = t.cursor.position;
+        dir = temp.Item2;
+      }
       t.cursor.RightWithLineBreak();
     }
-    // Console.WriteLine(max);
+    Console.WriteLine($"{max} is the maximum Product at {maxPos} in direction {dir}");
   }
 
   // returns the maximum product of all directions from the given table
-  private static int getMax(Table table)
+  private static Tuple<int, String> getMax(Table table)
   {
     int max = 0;
+    String dir = "";
     foreach(Direction d in Enum.GetValues(typeof(Direction)))
     {
-      int[] temp = TryInvoke(d, table);
-      max = Math.Max(max, ArrayProduct(temp));
-      Console.WriteLine($"{d} at {table.cursor.position}");
-      ArrayPrint(temp);
+      List<int> temp = TryInvoke(d, table);
+      if(max < ArrayProduct(temp))
+      {
+        max = ArrayProduct(temp);
+        dir = d.ToString();
+      }
     }
-    Console.WriteLine("----------------");
-    return max;
+    return new Tuple<int, String>(max, dir);
   }
 
   // Returns an array of values or an empty array, if an error was thrown
-  public static int[] TryInvoke(Direction d, Table t) {
+  public static List<int> TryInvoke(Direction d, Table t)
+  {
     try
     {
       switch (d)
@@ -52,11 +61,11 @@ class Euler11
     }
     catch (System.Exception)
     {
-      return new int[0] {};
+      return new List<int>(0);
     }
   }
 
-  public static void ArrayPrint(int[] array)
+  public static void ArrayPrint(ICollection<int> array)
   {
     Console.Write(@"{");
     foreach (int item in array)
@@ -66,16 +75,14 @@ class Euler11
     Console.Write(@"}" + "\n");
   }
 
-  private static int ArrayProduct(int[] array)
+  private static int ArrayProduct(ICollection<int> array)
   {
-    Console.WriteLine(array.Length);
-    // int product = 1;
-    // for(int i = 1; i < 4; i++)
-    // {
-    //   product *= array[i];
-    // }
+    int product = 1;
+    foreach (int i in array)
+    {
+      product *= i;
+    }
     // Console.WriteLine(product);
-    // return product;
-    return 42;
+    return product;
   }
 }

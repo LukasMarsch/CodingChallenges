@@ -12,66 +12,35 @@ using System.Collections;
 
 class Program
 {
-  static Hashtable cache;
+  // static Hashtable cache;
   public static void Main(String[] args)
   {
-    cache = new Hashtable();
-    Stack<uint> triangleNums = new Stack<uint>();
+    uint prev = 0;
+    uint current = 1;
     uint i = 1;
-    triangleNums.Push(i);
     uint numOfDivisors = 0;
     while(numOfDivisors < 500)
     {
-      i++;
-      triangleNums.Push(i + triangleNums.Peek());
-      numOfDivisors = getNumOfDivisors(triangleNums.Peek());
+      current = i;
+      current += prev;
+      numOfDivisors = getNumOfDivisors(current);
+      prev = current;
     }
-    Console.Write($"{triangleNums.Pop()} -> {numOfDivisors} Divisors");
+    Console.Write($"{current} -> {numOfDivisors}");
   }
 
   private static uint getNumOfDivisors(uint n) 
   {
-    HashSet<uint> divisors = new HashSet<uint>();
-    for (uint i = (uint) Math.Floor((double)n/2); i > 0;  i--)
+    Stack<uint> divisors = new Stack<uint>();
+    for (uint i = (uint) Math.Ceiling((double)n/2) + 1; i > 0;  i--)
     {
       if(n % i == 0)
       {
-        try{
-          cache.Add(i, getDivisors(i));
-        }
-        catch(ArgumentException ex){
-          //Console.WriteLine(ex.ToString());
-        }
-        finally
-        {
-          divisors.UnionWith((IEnumerable<uint>) cache[i]);
-          divisors.Add(i);
-        }
+        divisors.Push(i); 
       }
     }
+    divisors.Push(n);
+    foreach(uint i in divisors) Console.Write($"{i}, "); Console.Write("\n\n");
     return (uint) divisors.Count;
-  }
-
-  private static HashSet<uint> getDivisors(uint n)
-  {
-    HashSet<uint> divisors = new HashSet<uint>((int)Math.Floor(Math.Sqrt(n)));
-
-    for(uint i = 1; i < (uint) Math.Floor(n/2.0); i++)
-    {
-      if( n % i == 0)
-      {
-        if(cache.ContainsKey(i))
-        {
-          divisors.UnionWith((IEnumerable<uint>) cache[i]);
-        }
-        else
-        {
-          cache.Add(i, getDivisors(i));
-          divisors.UnionWith((IEnumerable<uint>)cache[i]);
-        }
-        divisors.Add(i);
-      }
-    }
-    return divisors;
   }
 }

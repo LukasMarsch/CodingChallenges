@@ -20,6 +20,7 @@ obj
 *.ilk
 *.map
 *.exp
+*.hi
 
 # Precompiled Headers
 *.gch

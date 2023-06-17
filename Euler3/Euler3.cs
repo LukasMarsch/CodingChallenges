@@ -2,7 +2,7 @@
 
 What is the largest prime factor of the number 600851475143 ? 
 
-So this one seems quite a bit trickier. Especially consider 600851475143 is a long and most operations are only suited for integer sized numbers. But there are still possibilities
+So this one seems quite a bit trickier. Especially consider 600851475143 is a long. But there are still possibilities
 that may introduce some computing time but it'll hopefully stay reasonable*/
 
 internal class Program

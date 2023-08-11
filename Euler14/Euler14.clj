@@ -15,4 +15,16 @@
      (conj v x)
      (recur (collatz x)))))
 
+<<<<<<< Updated upstream
 (println (count (vector (loop_me_daddy 200))))
+=======
+(time
+  (loop [ci 1
+         maxi 0
+         maxc 0]
+    (if (< ci 1e6)
+      (if (> (loop_me_daddy ci) maxc)
+        (recur (inc ci) ci (loop_me_daddy ci))
+        (recur (inc ci) maxi maxc))
+      maxi)))
+>>>>>>> Stashed changes

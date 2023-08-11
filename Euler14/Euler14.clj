@@ -10,15 +10,15 @@
     (#(+ 1 (* % 3)) x)))
 
 (defn loop_me_daddy [x]
-  (loop [v ()]
-   (when (not (= 1 x))
-     (conj v x)
-     (recur (collatz x)))))
+  (loop [x x
+         v []]
+   (if (not= 1 x)
+     (recur (collatz x) (conj v x))
+     (count v))))
 
-<<<<<<< Updated upstream
 (println (count (vector (loop_me_daddy 200))))
-=======
-(time
+
+(println
   (loop [ci 1
          maxi 0
          maxc 0]
@@ -27,4 +27,3 @@
         (recur (inc ci) ci (loop_me_daddy ci))
         (recur (inc ci) maxi maxc))
       maxi)))
->>>>>>> Stashed changes

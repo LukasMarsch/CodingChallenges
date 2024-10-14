@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Euler18;
+﻿namespace Euler18;
 public class Program {
     static string pyramide=@"75
 95 64
@@ -58,77 +56,6 @@ public class Program {
         return nodes[0];
     }
 
-    static void Traverse(Node? node, int order) {
-        HashSet<Node> set = new HashSet<Node>();
-        switch(order) {
-            case 0: Preorder(node, set); break;
-            case 1: Inorder(node, set); break;
-            case 2: Postorder(node, set); break;
-            //case -1: Levelorder(node, set); break;
-            default: Inorder(node, set); break;
-        }
-    }
-
-    static void Inorder(Node? node, HashSet<Node> set) {
-        if(node == null || set.Contains(node))
-            return;
-
-        set.Add(node);
-        Inorder(node.Left, set);
-        Console.WriteLine(set.Count());
-        Inorder(node.Right, set);
-        
-    }
-
-    static void Preorder(Node? node, HashSet<Node> set) {
-        if(node == null || set.Contains(node))
-            return;
-
-        set.Add(node);
-        Console.WriteLine(node.Value);
-        Preorder(node.Left, set);
-        Preorder(node.Right, set);
-    }
-
-    static void Postorder(Node? node, HashSet<Node> set) {
-        if(node == null || set.Contains(node))
-            return;
-
-        set.Add(node);
-        Postorder(node.Left, set);
-        Postorder(node.Right, set);
-        Console.WriteLine(node.Value);
-    }
-
-    static void Levelorder(Node node, HashSet<Node> set) {
-        int level = 0;
-        int number = 0;
-        Queue<Node> queue = new Queue<Node>();
-        queue.Enqueue(node);
-        set.Add(node);
-        while(queue.Count > 0) {
-            Node current = queue.Dequeue();
-            if(current.Left != null && !set.Contains(current.Left)) {
-                queue.Enqueue(current.Left);
-                set.Add(current.Left);
-            }
-
-            if(current.Right != null && !set.Contains(current.Right)) {
-                queue.Enqueue(current.Right);
-                set.Add(current.Right);
-            }
-
-            if(level == number) {
-                Console.WriteLine(current.Value.ToString());
-                level ++;
-                number = 0;
-            } else {
-                Console.Write(current.Value.ToString() + " ");
-                number ++;
-            }
-        }
-    }
-
     static int MaxSum(Node? node, Dictionary<Node, int> dict) {
         if(node == null)
             return 0;
@@ -151,40 +78,5 @@ public class Node {
 
     public Node(int value) {
         Value = value;
-    }
-
-    override public string ToString() {
-        HashSet<Node> set = new HashSet<Node>();
-        StringBuilder sb = new StringBuilder();
-        Queue<Node> q = new Queue<Node>();
-        int perRow = 0;
-        int current = 0;
-
-        q.Enqueue(this);
-
-        Node now;
-        while(q.Count > 0) {
-            now = q.Dequeue();
-
-            if(current == perRow) {
-                sb.AppendLine(now.Value.ToString());
-                perRow++;
-                current = 0;
-            } else {
-                sb.Append(now.Value.ToString() + " ");
-                current++;
-            }
-
-            if(now.Left != null && !set.Contains(now.Left)) {
-                q.Enqueue(now.Left);
-                set.Add(now.Left);
-            }
-
-            if(now.Right != null && !set.Contains(now.Right)) {
-                q.Enqueue(now.Right);
-                set.Add(now.Right);
-            }
-        }
-        return sb.ToString();
     }
 }

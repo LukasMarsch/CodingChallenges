@@ -66,3 +66,9 @@ dkms.conf
 # Clojure lsp and config
 .lsp/
 .clj-kondo/
+.cpcache/
+
+# unnecessary java files
+classes/
+*.class
+*.pdb

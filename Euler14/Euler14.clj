@@ -1,11 +1,8 @@
-(defn even [x] (= 0 (mod x 2)))
-(defn odd  [x] (= 1 (mod x 2)))
-
 (defn col_even [x] (long (/ x 2)))
 (defn col_odd [x] (long (+ 1 (* 3 x))))
 
 (defn collatz [x] 
-  (if (even x)
+  (if (even? x)
     (#(/ % 2) x)
     (#(+ 1 (* % 3)) x)))
 
@@ -15,8 +12,6 @@
    (if (not= 1 x)
      (recur (collatz x) (conj v x))
      (count v))))
-
-(println (count (vector (loop_me_daddy 200))))
 
 (println
   (loop [ci 1

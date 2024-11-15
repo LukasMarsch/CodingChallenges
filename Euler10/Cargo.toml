@@ -1,0 +1,10 @@
+[package]
+name = "Euler10"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "Euler10"
+path = "Euler10.rs"
